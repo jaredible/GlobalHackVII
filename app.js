@@ -16,36 +16,20 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
+app.get('/getstarted', (req, res) => {
+    res.render('getstarted');
+});
+
+app.get('/guides', (req, res) => {
+    res.render('guides');
+});
+
+app.get('/resources', (req, res) => {
+    res.render('resources');
+});
+
 app.get('/about', (req, res) => {
     res.render('about');
-});
-
-app.get('/blog-home', (req, res) => {
-    res.render('blog-home');
-});
-
-app.get('/blog-single', (req, res) => {
-    res.render('blog-single');
-});
-
-app.get('/contact', (req, res) => {
-    res.render('contact');
-});
-
-app.get('/elements', (req, res) => {
-    res.render('elements');
-});
-
-app.get('/menu', (req, res) => {
-    res.render('menu');
-});
-
-app.get('/menu2', (req, res) => {
-    res.render('menu2');
-});
-
-app.get('/team', (req, res) => {
-    res.render('team');
 });
 
 var env = app.get('env');
