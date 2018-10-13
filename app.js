@@ -34,6 +34,14 @@ app.get('/getstarted', (req, res) => {
     res.render('getstarted', { title: 'Get Started' });
 });
 
+app.get('/elements', (req, res) => {
+    res.render('elements', { title: 'Get Started' });
+});
+
+app.get('/menu', (req, res) => {
+    res.render('menu', { title: 'Get Started' });
+});
+
 app.get('/guides', (req, res) => {
     res.render('guides', { title: 'Guides' });
 });
