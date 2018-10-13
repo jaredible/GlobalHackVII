@@ -13,23 +13,23 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
-    res.render('index', { title: 'Testing' });
+    res.render('index', { title: 'Home' });
 });
 
 app.get('/getstarted', (req, res) => {
-    res.render('getstarted', { title: 'Testing' });
+    res.render('getstarted', { title: 'Get Started' });
 });
 
 app.get('/guides', (req, res) => {
-    res.render('guides', { title: 'Testing' });
+    res.render('guides', { title: 'Guides' });
 });
 
 app.get('/resources', (req, res) => {
-    res.render('resources', { title: 'Testing' });
+    res.render('resources', { title: 'Resources' });
 });
 
 app.get('/about', (req, res) => {
-    res.render('about', { title: 'Testing' });
+    res.render('about', { title: 'About' });
 });
 
 var env = app.get('env');
