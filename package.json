@@ -19,6 +19,7 @@
   "homepage": "https://github.com/jaredible/GlobalHackVII#readme",
   "dependencies": {
     "ejs": "^2.6.1",
+    "ejs-locals": "^1.0.2",
     "express": "^4.16.4"
   }
 }
