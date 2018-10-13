@@ -38,6 +38,10 @@ app.get('/menu', (req, res) => {
     res.render('menu');
 });
 
+app.get('/menu2', (req, res) => {
+    res.render('menu2');
+});
+
 app.get('/team', (req, res) => {
     res.render('team');
 });
