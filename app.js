@@ -4,8 +4,8 @@ const path = require('path');
 const app = express();
 const server = require('http').Server(app);
 
-const PORT = 8000;
-const HOST = 'localhost';
+var PORT = 8000;
+var HOST = 'localhost';
 
 app.engine('ejs', require('ejs-locals'));
 app.set('views', __dirname + '/views');
@@ -47,6 +47,13 @@ app.get('/menu2', (req, res) => {
 app.get('/team', (req, res) => {
     res.render('team');
 });
+
+var env = app.get('env');
+
+if (env === "production") {
+    PORT = 8080;
+    HOST = '0.0.0.0';
+}
 
 server.listen(PORT, HOST, () => {
     var env = app.get('env');
