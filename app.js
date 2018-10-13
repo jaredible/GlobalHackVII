@@ -12,6 +12,19 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
+var mysql = require('mysql');
+
+var con = mysql.createConnection({
+  host: "gh7.cisrmnpfjjvc.us-east-2.rds.amazonaws.com",
+  user: "admindb",
+  password: "bqQa4i99g0b22qr"
+});
+
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
+
 app.get('/', (req, res) => {
     res.render('index', { title: 'Home' });
 });
