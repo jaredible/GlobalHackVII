@@ -7,6 +7,8 @@ const server = require('http').Server(app);
 const PORT = 8000;
 const HOST = 'localhost';
 
+app.engine('ejs', require('ejs-locals'));
+app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
