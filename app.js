@@ -1,26 +1,27 @@
 const express = require('express');
 const path = require('path');
+const mysql = require('mysql');
 
 const app = express();
 const server = require('http').Server(app);
+const io = require('socket.io')(server);
 
 var PORT = 8000;
 var HOST = 'localhost';
+const ENV = app.get('env');
 
 app.engine('ejs', require('ejs-locals'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
-var mysql = require('mysql');
-
-var con = mysql.createConnection({
+var connection = mysql.createConnection({
   host: "gh7.cisrmnpfjjvc.us-east-2.rds.amazonaws.com",
   user: "admindb",
   password: "bqQa4i99g0b22qr"
 });
 
-con.connect(function(err) {
+connection.connect(function(err) {
   if (err) throw err;
   console.log("Connected!");
 });
@@ -45,14 +46,30 @@ app.get('/about', (req, res) => {
     res.render('about', { title: 'About' });
 });
 
-var env = app.get('env');
+// listen on every connection
+io.on('connection', (socket) => {
+    console.log('New user connected');
 
-if (env === "production") {
+    // default username
+    socket.username = "Anonymous";
+
+    // listen on change_username
+    socket.on('change_username', (data) => {
+        socket.username = data.username;
+    });
+
+    // listen on new_message
+    socket.on('new_message', (data) => {
+        // broadcast the new message
+        io.sockets.emit('new_message', { message: data.message, username: socket.username });
+    });
+});
+
+if (ENV === "production") {
     PORT = 8080;
     HOST = '0.0.0.0';
 }
 
 server.listen(PORT, HOST, () => {
-    var env = app.get('env');
-    console.log(`${env.charAt(0).toUpperCase() + env.substring(1)} app listening at http://${server.address().address}:${server.address().port}`);
+    console.log(`${ENV.charAt(0).toUpperCase() + ENV.substring(1)} app listening at http://${server.address().address}:${server.address().port}`);
 });
