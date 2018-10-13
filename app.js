@@ -4,7 +4,6 @@ const mysql = require('mysql');
 
 const app = express();
 const server = require('http').Server(app);
-const io = require('socket.io')(server);
 
 var PORT = 8000;
 var HOST = 'localhost';
@@ -52,25 +51,6 @@ app.get('/resources', (req, res) => {
 
 app.get('/about', (req, res) => {
     res.render('about', { title: 'About' });
-});
-
-// listen on every connection
-io.on('connection', (socket) => {
-    console.log('New user connected');
-
-    // default username
-    socket.username = "Anonymous";
-
-    // listen on change_username
-    socket.on('change_username', (data) => {
-        socket.username = data.username;
-    });
-
-    // listen on new_message
-    socket.on('new_message', (data) => {
-        // broadcast the new message
-        io.sockets.emit('new_message', { message: data.message, username: socket.username });
-    });
 });
 
 if (ENV === "production") {
