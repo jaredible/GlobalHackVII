@@ -13,13 +13,13 @@
 	</div>
 </section>
 
-<div class="row">
+<div class="p50-wrapper row">
 	<% resources.forEach(function (resource) { %>
 	<div class="col-md-6">
-		<div class="card mb-3">
-			<a href="<%= resource.link %>" class="btn btn-fix ">
+		<div class="card bg-light mb-3">
+			<a href="<%= resource.url %>" class="btn btn-fix ">
 				<div class="card-block ">
-					<h4 class="card-title  ">
+					<h4 class="card-title">
 						<%= resource.title %>
 					</h4>
 					<p class="card-text">

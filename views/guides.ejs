@@ -24,9 +24,10 @@
 			</div>
 		</div>
 		<div class="row justify-content-center d-flex align-items-center">
+			<% guides.forEach(function (guide) { %>
 			<div class="col-lg-3 col-md-6 single-team">
 				<div class="thumb">
-					<img class="img-fluid" src="img/t1.jpg" alt="">
+					<img class="img-fluid" src="<%= guide.profile_pic_url %>" alt="">
 					<div class="align-items-center justify-content-center d-flex">
 						<a href="#"><i class="fa fa-facebook"></i></a>
 						<a href="#"><i class="fa fa-twitter"></i></a>
@@ -34,65 +35,20 @@
 					</div>
 				</div>
 				<div class="meta-text mt-30 text-center">
-					<h4>Madhuri Kapoor</h4>
-					<h5> India </h5>
-					<p>I have been living in St. Louis for 6 years, and immigrated from India. I have lived my whole life in India
-						before St. Louis. I enjoy meeting and helping new immigrants to the city of St. Louis, and showing them grovery
-						strores and restaurants.</p>
+					<h4>
+						<%= guide.first_name  %>
+						<%= guide.last_name %>
+					</h4>
+					<h5>
+						<i>
+							<%= country %></i>
+					</h5>
+					<p>
+						<%= guide.bio %>
+					</p>
 				</div>
 			</div>
-			<div class="col-lg-3 col-md-6 single-team">
-				<div class="thumb">
-					<img class="img-fluid" src="img/t2.jpeg" alt="">
-					<div class="align-items-center justify-content-center d-flex">
-						<a href="#"><i class="fa fa-facebook"></i></a>
-						<a href="#"><i class="fa fa-twitter"></i></a>
-						<a href="#"><i class="fa fa-linkedin"></i></a>
-					</div>
-				</div>
-				<div class="meta-text mt-30 text-center">
-					<h4>Ashkay Patekar</h4>
-					<h5> India </h5>
-					<p>I am a banker in St. Louis and know the struggles facing immigrants becasue I came to this country from India.
-						I work at a bank, and love to help new St. Louisians get the forms and information ready to get a bank account
-						and charge card. </p>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-6 single-team">
-				<div class="thumb">
-					<img class="img-fluid" src="img/t3.jpg" alt="">
-					<div class="align-items-center justify-content-center d-flex">
-						<a href="#"><i class="fa fa-facebook"></i></a>
-						<a href="#"><i class="fa fa-twitter"></i></a>
-						<a href="#"><i class="fa fa-linkedin"></i></a>
-					</div>
-				</div>
-				<div class="meta-text mt-30 text-center">
-					<h4>Sulaf Kandalaft</h4>
-					<h5> Syria </h5>
-					<p>I speak fluent Syrian, and have always have a spot on my couch for those in need. I immigrate to this great
-						country 16 years ago, and have been back to Syria many times since then. I am knowledgeable about the forms
-						necessary to live a succesful life in this country. </p>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-6 single-team">
-				<div class="thumb">
-					<img class="img-fluid" src="img/t4.jpg" alt="">
-					<div class="align-items-center justify-content-center d-flex">
-						<a href="#"><i class="fa fa-facebook"></i></a>
-						<a href="#"><i class="fa fa-twitter"></i></a>
-						<a href="#"><i class="fa fa-linkedin"></i></a>
-					</div>
-				</div>
-				<div class="meta-text mt-30 text-center">
-					<h4>Mahmoud Jouma</h4>
-					<h5> Syria </h5>
-					<p>Helping people has always been dear to me since I was helped by others when I moved to the USA by myself to
-						escape conflict. I enjoy giving people the tools to get and stay on their feet in a land with many opportunites,
-						but that can be confusing and overwhelming. </p>
-				</div>
-			</div>
-
+			<% }); %>
 		</div>
 	</div>
 </section>

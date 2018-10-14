@@ -21,30 +21,34 @@
 					<h5 class="text-white">
 						<h6 class="text-uppercase">Enter the country you are coming from and the city you are going to.</h6>
 						<h3>
-							<form action="#">
-								<div class="input-group-icon mt-10">
-									<div class="icon"><i class="fa fa-globe" aria-hidden="true"></i></div>
-									<div class="form-select" id="default-select">
-										<select id="country">
-											<option selected>Country you are from...</option>
-											<option value="0">Syria</option>
-											<option value="1">India</option>
-										</select>
-									</div>
+							<div class="input-group-icon mt-10">
+								<div class="icon"><i class="fa fa-globe" aria-hidden="true"></i></div>
+								<div class="form-select" id="default-select">
+									<select id="country">
+										<option selected>Country you are from...</option>
+										<% for(var i = 0; i < states.length; i++) { %>
+										<option value="<%= states[i].id %>">
+											<%= states[i].name %>
+										</option>
+										<% } %>
+									</select>
 								</div>
-								<div class="input-group-icon mt-10">
-									<div class="icon"><i class="fa fa-plane" aria-hidden="true"></i></div>
-									<div class="form-select" id="default-select">
-										<select id="city">
-											<option selected>City you are going to...</option>
-											<option value="0">St. Louis</option>
-											<option value="1">Chicago</option>
-										</select>
-									</div>
+							</div>
+							<div class="input-group-icon mt-10">
+								<div class="icon"><i class="fa fa-plane" aria-hidden="true"></i></div>
+								<div class="form-select" id="default-select">
+									<select id="city">
+										<option selected>City you are going to...</option>
+										<% for(var i = 0; i < cities.length; i++) { %>
+										<option value="<%= cities[i].id %>">
+											<%= cities[i].name %>
+										</option>
+										<% } %>
+									</select>
 								</div>
-								<button type="submit" id="findGuides" class="primary-btn squire mx-auto mt-20">CLICK HERE TO FIND A GUIDE</button>
-								<button type="submit" id="findResources" class="primary-btn squire mx-auto mt-20">CLICK HERE TO FIND RESOURCES</button>
-							</form>
+							</div>
+							<button type="submit" id="findGuides" class="primary-btn squire mx-auto mt-20">CLICK HERE TO FIND A GUIDE</button>
+							<button type="submit" id="findResources" class="primary-btn squire mx-auto mt-20">CLICK HERE TO FIND RESOURCES</button>
 						</h3>
 					</h5>
 				</p>

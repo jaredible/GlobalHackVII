@@ -418,7 +418,7 @@ $(document).ready(function () {
         console.log("city_val:" + country_val + " city_text:" + city_text);
 
         if (country_val >= 0 && city_val >= 0) {
-            var params = "?country=" + country_text.toLowerCase() + "&city=" + city_text.toLowerCase();
+            var params = "?countryId=" + country_val + "&cityId=" + city_val;
             window.location.href = "guides" + params;
         }
     });
@@ -435,7 +435,7 @@ $(document).ready(function () {
         console.log("city_val:" + country_val + " city_text:" + city_text);
 
         if (country_val >= 0 && city_val >= 0) {
-            var params = "?country=" + country_text.toLowerCase() + "&city=" + city_text.toLowerCase();
+            var params = "?countryId=" + country_val + "&cityId=" + city_val
             window.location.href = "resources" + params
         }
     });

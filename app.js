@@ -15,87 +15,102 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
 var connection = mysql.createConnection({
-  host: "gh7.cisrmnpfjjvc.us-east-2.rds.amazonaws.com",
-  user: "admindb",
-  password: "bqQa4i99g0b22qr"
+    host: "gh7.cisrmnpfjjvc.us-east-2.rds.amazonaws.com",
+    user: "admindb",
+    password: "bqQa4i99g0b22qr",
+    database: "gh7db"
 });
 
-connection.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected!");
+connection.connect(function (err) {
+    if (err) throw err;
+    console.log("Connected!");
 });
 
 app.get('/', (req, res) => {
-    res.render('index', { title: 'Getting Started' });
+    connection.query("SELECT id, name FROM country", function (err1, result1, fields1) {
+        connection.query("SELECT id, name FROM city", function (err2, result2, fields2) {
+            res.render('index', {
+                title: 'Getting Started',
+                states: result1,
+                cities: result2
+            });
+        });
+    });
 });
 
 app.get('/guides', (req, res) => {
-    res.render('guides', { title: 'Guides' });
+    connection.query("SELECT first_name, last_name, bio, profile_pic_url FROM guide WHERE countryId = " + req.query.countryId + " AND cityId = " + req.query.cityId, function (err1, result1, fields1) {
+        connection.query("SELECT name FROM country WHERE id = " + req.query.countryId, function (err2, result2, fields2) {
+            res.render('guides', {
+                title: 'Guides',
+                guides: result1,
+                country: result2[0].name
+            });
+        });
+    });
 });
 
 app.get('/resources', (req, res) => {
-    var resources = [
-        {
-            title: "Business",
-            info: "As a foreign student, you need XYZ.",
-            link: "resources/business"
-        },
-        {
-            title: "Community",
-            info: "Usage of the Internet is becoming more common due to rapid advance. Usage of the Internet is becoming more common due to rapid advance.",
-            link: "resources/community"
-        },
-        {
-            title: "Education",
-            info: "As a foreign student, you need XYZ.",
-            link: "resources/education"
-        },
-        {
-            title: "Employment",
-            info: "Usage of the Internet is becoming more common due to rapid advance. Usage of the Internet is becoming more common due to rapid advance.",
-            link: "resources/employment"
-        },
-        {
-            title: "Groceries",
-            info: "Usage of the Internet is becoming more common due to rapid advance. Usage of the Internet is becoming more common due to rapid advance.",
-            link: "resources/groceries"
-        },
-        {
-            title: "Refugee",
-            info: "As a foreign student, you need XYZ.",
-            link: "resources/refugee"
-        }
-    ];
-    
-    res.render('resources', { title: 'Resources', resources: resources });
+    connection.query("SELECT title, info, url FROM resource", function (err, result, fields) {
+        res.render('resources', {
+            title: 'Resources',
+            resources: result
+        });
+    });
 });
 
-app.get('/resources/business', (req, res) => {
-    res.render('resources/business', { title: 'Business Resources' });
+app.get('/business', (req, res) => {
+    res.render('business', {
+        title: 'Business Resources'
+    });
 });
 
-app.get('/resources/community', (req, res) => {
-    res.render('resources/community', { title: 'Community Resources' });
+app.get('/community', (req, res) => {
+    res.render('community', {
+        title: 'Community Resources'
+    });
 });
 
-app.get('/resources/education', (req, res) => {
-    res.render('resources/education', { title: 'Educational Resources' });
+app.get('/education', (req, res) => {
+    res.render('education', {
+        title: 'Educational Resources'
+    });
 });
 
-app.get('/resources/employment', (req, res) => {
-    res.render('resources/employment', { title: 'Employment Resources' });
+app.get('/employment', (req, res) => {
+    res.render('employment', {
+        title: 'Employment Resources'
+    });
 });
 
-app.get('/resources/groceries', (req, res) => {
-    res.render('resources/groceries', { title: 'Grocery Resources' });
+app.get('/groceries', (req, res) => {
+    res.render('groceries', {
+        title: 'Grocery Resources'
+    });
 });
 
-app.get('/resources/refugee', (req, res) => {
-    res.render('resources/refugee', { title: 'Refugee Resources' });
+app.get('/refugee', (req, res) => {
+    res.render('refugee', {
+        title: 'Refugee Resources'
+    });
+});
+
+app.get('/restaurants', (req, res) => {
+    res.render('restaurants', {
+        title: 'Restaurant Resources'
+    });
+});
+
+app.get('/transportation', (req, res) => {
+    res.render('transportation', {
+        title: 'Transportation Resources'
+    });
 });
 
 app.get('/about', (req, res) => {
-    res.render('about', { title: 'About' });
+    res.render('about', {
+        title: 'About'
+    });
 });
 
 if (ENV === "production") {

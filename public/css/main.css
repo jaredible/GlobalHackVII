@@ -1310,7 +1310,8 @@ h6 {
 
 .input-group-icon .icon {
     position: absolute;
-    left: 20px;
+    top: 7px;
+    left: 14px;
     line-height: 40px;
     z-index: 3
 }
@@ -2424,7 +2425,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 .banner-area {
     background: url(../img/banner-bg.jpg) center;
     background-size: cover;
-    background-attachment: fixed
+    background-attachment: fixed;
 }
 
 @media (max-width: 767.98px) {
@@ -4109,6 +4110,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .transparent-white-half {
     background: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .btn-fix {
@@ -4117,4 +4119,95 @@ body.mobile-nav-active #mobile-nav-toggle {
     white-space: normal;
     color: black;
     text-align: left;
+}
+
+.cusDD_slick_l {
+    position: relative;
+    width: 250px;
+    margin: auto;
+
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+
+    text-align: left;
+    text-indent: 20px;
+    color: #808080;
+}
+
+.cusDD_slick_l .cusDD_select {
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid #c0c0c0;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    z-index: 0;
+}
+
+.cusDD_slick_l .cusDD_arrow {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 30px;
+    background: url("http://skyscrapercenter.com/img/chevron-down.png") no-repeat;
+    background-size: 60% auto;
+    background-position: 50% 50%;
+}
+
+.cusDD_slick_l .cusDD_arrow.active {
+    background: url("http://skyscrapercenter.com/img/chevron-down.png") no-repeat;
+    background-size: 60% auto;
+    background-position: 50% 50%;
+}
+
+.cusDD_slick_l .cusDD_options {
+    background: rgba(255, 255, 255, 0.4);
+    border-left: 1px solid #c0c0c0;
+    border-right: 1px solid #c0c0c0;
+    border-bottom: 1px solid #c0c0c0;
+    position: absolute;
+    top: 42px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    display: none;
+}
+
+.cusDD_slick_l .cusDD_opt {
+    height: 40px;
+    line-height: 40px;
+    width: 100%;
+    display: block;
+    position: relative;
+    transition: 300ms;
+    overflow: hidden;
+}
+
+.cusDD_slick_l .cusDD_opt:before {
+    content: "";
+    z-index: -1;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -320px;
+    height: inherit;
+    width: 300px;
+    transform: skew(-30deg);
+    background: rgba(255, 255, 255, 0.6);
+    transition: 300ms;
+}
+
+.cusDD_slick_l .cusDD_opt:hover:before {
+    transform: skew(-30deg) translateX(300px);
+}
+
+.p30-wrapper {
+    padding: 30px;
+    list-style-type: disc;
+}
+
+.p50-wrapper {
+    padding: 50px;
+    list-style-type: disc;
 }
