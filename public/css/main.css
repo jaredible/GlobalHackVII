@@ -1311,7 +1311,6 @@ h6 {
 .input-group-icon .icon {
     position: absolute;
     left: 20px;
-    top: 0;
     line-height: 40px;
     z-index: 3
 }

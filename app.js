@@ -46,7 +46,45 @@ app.get('/guides', (req, res) => {
 });
 
 app.get('/resources', (req, res) => {
-    res.render('resources', { title: 'Resources' });
+    var resources = [
+        {
+            title: "Student",
+            info: "As a foreign student, you need XYZ.",
+            link: "resources/student"
+        },
+        {
+            title: "Employment",
+            info: "Usage of the Internet is becoming more common due to rapid advance. Usage of the Internet is becoming more common due to rapid advance.",
+            link: "resources/employment"
+        },
+        {
+            title: "Business",
+            info: "Usage of the Internet is becoming more common due to rapid advance. Usage of the Internet is becoming more common due to rapid advance.",
+            link: "resources/business"
+        },
+        {
+            title: "Refugee",
+            info: "Usage of the Internet is becoming more common due to rapid advance. Usage of the Internet is becoming more common due to rapid advance.",
+            link: "resources/refugee"
+        }
+    ];
+    res.render('resources', { title: 'Resources', resources: resources });
+});
+
+app.get('/resources/student', (req, res) => {
+    res.render('resources/student');
+});
+
+app.get('/resources/employment', (req, res) => {
+    res.render('resources/employment');
+});
+
+app.get('/resources/business', (req, res) => {
+    res.render('resources/business');
+});
+
+app.get('/resources/refugee', (req, res) => {
+    res.render('resources/refugee');
 });
 
 app.get('/about', (req, res) => {
