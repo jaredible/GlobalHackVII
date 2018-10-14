@@ -26,19 +26,7 @@ connection.connect(function(err) {
 });
 
 app.get('/', (req, res) => {
-    res.render('index', { title: 'Home' });
-});
-
-app.get('/getstarted', (req, res) => {
-    res.render('getstarted', { title: 'Get Started' });
-});
-
-app.get('/elements', (req, res) => {
-    res.render('elements', { title: 'Get Started' });
-});
-
-app.get('/menu', (req, res) => {
-    res.render('menu', { title: 'Get Started' });
+    res.render('index', { title: 'Getting Started' });
 });
 
 app.get('/guides', (req, res) => {
@@ -48,9 +36,19 @@ app.get('/guides', (req, res) => {
 app.get('/resources', (req, res) => {
     var resources = [
         {
-            title: "Student",
+            title: "Business",
             info: "As a foreign student, you need XYZ.",
-            link: "resources/student"
+            link: "resources/business"
+        },
+        {
+            title: "Community",
+            info: "Usage of the Internet is becoming more common due to rapid advance. Usage of the Internet is becoming more common due to rapid advance.",
+            link: "resources/community"
+        },
+        {
+            title: "Education",
+            info: "As a foreign student, you need XYZ.",
+            link: "resources/education"
         },
         {
             title: "Employment",
@@ -58,33 +56,42 @@ app.get('/resources', (req, res) => {
             link: "resources/employment"
         },
         {
-            title: "Business",
+            title: "Groceries",
             info: "Usage of the Internet is becoming more common due to rapid advance. Usage of the Internet is becoming more common due to rapid advance.",
-            link: "resources/business"
+            link: "resources/groceries"
         },
         {
             title: "Refugee",
-            info: "Usage of the Internet is becoming more common due to rapid advance. Usage of the Internet is becoming more common due to rapid advance.",
+            info: "As a foreign student, you need XYZ.",
             link: "resources/refugee"
         }
     ];
+    
     res.render('resources', { title: 'Resources', resources: resources });
 });
 
-app.get('/resources/student', (req, res) => {
-    res.render('resources/student');
+app.get('/resources/business', (req, res) => {
+    res.render('resources/business', { title: 'Business Resources' });
+});
+
+app.get('/resources/community', (req, res) => {
+    res.render('resources/community', { title: 'Community Resources' });
+});
+
+app.get('/resources/education', (req, res) => {
+    res.render('resources/education', { title: 'Educational Resources' });
 });
 
 app.get('/resources/employment', (req, res) => {
-    res.render('resources/employment');
+    res.render('resources/employment', { title: 'Employment Resources' });
 });
 
-app.get('/resources/business', (req, res) => {
-    res.render('resources/business');
+app.get('/resources/groceries', (req, res) => {
+    res.render('resources/groceries', { title: 'Grocery Resources' });
 });
 
 app.get('/resources/refugee', (req, res) => {
-    res.render('resources/refugee');
+    res.render('resources/refugee', { title: 'Refugee Resources' });
 });
 
 app.get('/about', (req, res) => {

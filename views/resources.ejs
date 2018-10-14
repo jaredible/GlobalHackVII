@@ -16,14 +16,18 @@
 <div class="row">
 	<% resources.forEach(function (resource) { %>
 	<div class="col-md-6">
-		<p>
-			<a href="<%= resource.link %>">
-				<%= resource.title %>
+		<div class="card mb-3">
+			<a href="<%= resource.link %>" class="btn btn-fix ">
+				<div class="card-block ">
+					<h4 class="card-title  ">
+						<%= resource.title %>
+					</h4>
+					<p class="card-text">
+						<%= resource.info %>
+					</p>
+				</div>
 			</a>
-		</p>
-		<p>
-			<%= resource.info %>
-		</p>
+		</div>
 	</div>
 	<% }); %>
 </div>

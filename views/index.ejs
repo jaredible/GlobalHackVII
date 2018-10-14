@@ -5,14 +5,18 @@
 	<div class="container">
 		<div class="row fullscreen d-flex justify-content-center align-items-center">
 			<div class="banner-content col-lg-10 col-md-12 justify-content-center">
-				<h1>
-					Find a helpful guide!
-				</h1>
+				<p>
+					<h1 class="text-white">Discover Your Path!</h1>
+				</p>
 				<p class="mx-auto">
 					<h3 class="text-white">
 						Local guides want to help you!
 					</h3>
 				</p>
+
+				<br>
+				<br>
+
 				<p class="text-left mx-auto">
 					<h5 class="text-white">
 						<h6 class="text-uppercase">Enter the country you are coming from and the city you are going to.</h6>
@@ -21,9 +25,9 @@
 								<div class="input-group-icon mt-10">
 									<div class="icon"><i class="fa fa-globe" aria-hidden="true"></i></div>
 									<div class="form-select" id="default-select">
-										<select>
-											<option value="1">Country you are from</option>
-											<option value="1">Syria</option>
+										<select id="country">
+											<option selected>Country you are from...</option>
+											<option value="0">Syria</option>
 											<option value="1">India</option>
 										</select>
 									</div>
@@ -31,15 +35,15 @@
 								<div class="input-group-icon mt-10">
 									<div class="icon"><i class="fa fa-plane" aria-hidden="true"></i></div>
 									<div class="form-select" id="default-select">
-										<select>
-											<option value="1">City you are going to</option>
-											<option value="1">St. Louis</option>
+										<select id="city">
+											<option selected>City you are going to...</option>
+											<option value="0">St. Louis</option>
 											<option value="1">Chicago</option>
 										</select>
 									</div>
 								</div>
-								<button type="submit" class="primary-btn squire mx-auto mt-20">CLICK HERE TO FIND A GUIDE</button>
-								<button type="submit" class="primary-btn squire mx-auto mt-20">CLICK HERE TO FIND RESOURCES</button>
+								<button type="submit" id="findGuides" class="primary-btn squire mx-auto mt-20">CLICK HERE TO FIND A GUIDE</button>
+								<button type="submit" id="findResources" class="primary-btn squire mx-auto mt-20">CLICK HERE TO FIND RESOURCES</button>
 							</form>
 						</h3>
 					</h5>

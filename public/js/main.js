@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     "use strict";
 
     var window_width = $(window).width(),
@@ -38,10 +38,10 @@ $(document).ready(function() {
 
     //------- Datepicker  js --------//  
 
-      $( function() {
-        $( "#datepicker" ).datepicker();
-        $( "#datepicker2" ).datepicker();
-      } );
+    $(function () {
+        $("#datepicker").datepicker();
+        $("#datepicker2").datepicker();
+    });
 
 
     //------- Superfist nav menu  js --------//  
@@ -54,21 +54,21 @@ $(document).ready(function() {
     });
 
 
-    if ( $(".site-content").hasClass("instagram") ) {
+    if ($(".site-content").hasClass("instagram")) {
         footerIntagram();
     }
 
 
-    function footerIntagram(){
+    function footerIntagram() {
         var feed = new Instafeed({
             target: "footer-ig-stream",
             get: "user",
-            limit : 6,
+            limit: 6,
             resolution: 'standard_resolution',
             userId: 2159114835,
             accessToken: "2159114835.9e667eb.7a37f9b944ea4023b94541c661cbf43d",
             template: '<a href="{{image}}" class="mfp-ig-popup" data-effect="mfp-zoom-in" title="{{title}}"><img src="{{image}}" alt="{{caption}}"></a>',
-            after: function() {
+            after: function () {
                 $(".mfp-ig-popup").magnificPopup({
                     type: "image",
                     removalDelay: 500, //delay removal by X to allow out-animation
@@ -79,7 +79,7 @@ $(document).ready(function() {
                         enabled: true // set to false to disable gallery
                     },
                     callbacks: {
-                        beforeOpen: function() {
+                        beforeOpen: function () {
                             // just a hack that adds mfp-anim class to markup 
                             this.st.image.markup = this.st.image.markup.replace("mfp-figure", "mfp-figure mfp-with-anim");
                             this.st.mainClass = this.st.el.attr("data-effect");
@@ -91,7 +91,7 @@ $(document).ready(function() {
         });
         feed.run();
     }
-    
+
 
     //------- Mobile Nav  js --------//  
 
@@ -108,19 +108,19 @@ $(document).ready(function() {
         $('body').append('<div id="mobile-body-overly"></div>');
         $('#mobile-nav').find('.menu-has-children').prepend('<i class="lnr lnr-chevron-down"></i>');
 
-        $(document).on('click', '.menu-has-children i', function(e) {
+        $(document).on('click', '.menu-has-children i', function (e) {
             $(this).next().toggleClass('menu-item-active');
             $(this).nextAll('ul').eq(0).slideToggle();
             $(this).toggleClass("lnr-chevron-up lnr-chevron-down");
         });
 
-        $(document).on('click', '#mobile-nav-toggle', function(e) {
+        $(document).on('click', '#mobile-nav-toggle', function (e) {
             $('body').toggleClass('mobile-nav-active');
             $('#mobile-nav-toggle i').toggleClass('lnr-cross lnr-menu');
             $('#mobile-body-overly').toggle();
         });
 
-        $(document).click(function(e) {
+        $(document).click(function (e) {
             var container = $("#mobile-nav, #mobile-nav-toggle");
             if (!container.is(e.target) && container.has(e.target).length === 0) {
                 if ($('body').hasClass('mobile-nav-active')) {
@@ -136,7 +136,7 @@ $(document).ready(function() {
 
     //------- Smooth Scroll  js --------//  
 
-    $('.nav-menu a, #mobile-nav a, .scrollto').on('click', function() {
+    $('.nav-menu a, #mobile-nav a, .scrollto').on('click', function () {
         if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
             var target = $(this.hash);
             if (target.length) {
@@ -169,13 +169,13 @@ $(document).ready(function() {
         }
     });
 
-    $(document).ready(function() {
+    $(document).ready(function () {
 
         $('html, body').hide();
 
         if (window.location.hash) {
 
-            setTimeout(function() {
+            setTimeout(function () {
 
                 $('html, body').scrollTop(0).show();
 
@@ -197,7 +197,7 @@ $(document).ready(function() {
 
     //------- Header Scroll Class  js --------//  
 
-    $(window).scroll(function() {
+    $(window).scroll(function () {
         if ($(this).scrollTop() > 100) {
             $('#header').addClass('header-scrolled');
         } else {
@@ -209,13 +209,13 @@ $(document).ready(function() {
 
 
     $('.active-review-carusel').owlCarousel({
-        items:2,
+        items: 2,
         margin: 30,
         dots: true,
         autoplayHoverPause: true,
-        smartSpeed:650,         
-        autoplay:true,      
-            responsive: {
+        smartSpeed: 650,
+        autoplay: true,
+        responsive: {
             0: {
                 items: 1
             },
@@ -236,7 +236,7 @@ $(document).ready(function() {
         var countDownDate = new Date("Sep 5, 2018 15:37:25").getTime();
 
         // Update the count down every 1 second
-        var x = setInterval(function() {
+        var x = setInterval(function () {
 
             // Get todays date and time
             var now = new Date().getTime();
@@ -402,8 +402,64 @@ $(document).ready(function() {
 
     //------- Mailchimp js --------//  
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('#mc_embed_signup').find('form').ajaxChimp();
     });
 
+    $("#findGuides").click(function () {
+        var selected_country = $('#country option:selected');
+        var country_val = selected_country.val();
+        var country_text = selected_country.text();
+        console.log("country_val:" + country_val + " country_text:" + city_text);
+
+        var selected_city = $('#city option:selected');
+        var city_val = selected_city.val();
+        var city_text = selected_city.text();
+        console.log("city_val:" + country_val + " city_text:" + city_text);
+
+        if (country_val >= 0 && city_val >= 0) {
+            var params = "?country=" + country_text.toLowerCase() + "&city=" + city_text.toLowerCase();
+            window.location.href = "guides" + params;
+        }
+    });
+
+    $("#findResources").click(function () {
+        var selected_country = $('#country option:selected');
+        var country_val = selected_country.val();
+        var country_text = selected_country.text();
+        console.log("country_val:" + country_val + " country_text:" + city_text);
+
+        var selected_city = $('#city option:selected');
+        var city_val = selected_city.val();
+        var city_text = selected_city.text();
+        console.log("city_val:" + country_val + " city_text:" + city_text);
+
+        if (country_val >= 0 && city_val >= 0) {
+            var params = "?country=" + country_text.toLowerCase() + "&city=" + city_text.toLowerCase();
+            window.location.href = "resources" + params
+        }
+    });
+
+    $('.card-wrapper').on('click', function (event) {
+        alert('You clicked the Bootstrap Card');
+    });
+
+    $("#footer-easter-egg").prop('href', checkBrowser() === "Chrome" ? "chrome://dino" : (checkBrowser() === "Firefox" ? "about:robots" : "/"));
 });
+
+function checkBrowser() {
+    c = navigator.userAgent.search("Chrome");
+    f = navigator.userAgent.search("Firefox");
+    m8 = navigator.userAgent.search("MSIE 8.0");
+    m9 = navigator.userAgent.search("MSIE 9.0");
+    if (c > -1) {
+        browser = "Chrome";
+    } else if (f > -1) {
+        browser = "Firefox";
+    } else if (m9 > -1) {
+        browser = "MSIE 9.0";
+    } else if (m8 > -1) {
+        browser = "MSIE 8.0";
+    }
+    return browser;
+}
